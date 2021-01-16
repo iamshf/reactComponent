@@ -1,0 +1,98 @@
+.container {
+    display:flex;
+    flex-flow:row nowrap;
+    align-items:center;
+}
+.btn {
+    margin:0 1rem 0 0;
+    padding:0;
+    outline:none;
+    box-sizing:border-box;
+    width:3rem;
+    height:3rem;
+    background: linear-gradient(to bottom, rgb(199, 226, 47), rgb(172, 196, 36));
+    border-radius:50%;
+    border:none;
+    position: relative;
+    flex: 0 0 auto;
+}
+.microphone {
+    pointer-events: none;
+    position: relative;
+}
+.microphone:after, .microphone:before, .recording, .playing, .paused {
+    pointer-events: none;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    content: '';
+    box-sizing: border-box;
+}
+
+.microphone{
+    color: rgb(255, 255, 255);
+    opacity: 0.8;
+    display:inline-block;
+    vertical-align: middle;
+    width: 1.2rem;
+    height: 1rem;
+    border-color:rgb(255, 255, 255);
+    border-width: 0rem 0.2rem 0.2rem;
+    border-style:solid;
+    border-radius: 2rem / 0 0 2rem 2rem;
+}
+
+.microphone:before {
+    top: -0.6rem;
+    width: 0.8rem;
+    height: 1.4rem;
+    border:0.1rem solid rgb(255, 255, 255);
+    border-radius: 2rem;
+    background-color:rgb(255, 255, 255);
+}
+
+.microphone:after {
+    width:0.2rem;
+    height: 0.2rem;
+    bottom: -0.2rem;
+    box-shadow: inset 0 0 0 3.2rem rgb(255,255,255),0 0.2rem rgb(255, 255, 255),0 0.4rem rgb(255, 255, 255),-0.2rem 0.4rem rgb(255, 255, 255),-0.4rem 0.4rem rgb(255, 255, 255),-0.6rem 0.4rem rgb(255, 255, 255),0.2rem 0.4rem rgb(255, 255, 255),0.4rem 0.4rem rgb(255, 255, 255),0.6rem 0.4rem rgb(255, 255, 255);
+}
+.recording {
+    top:0.8rem;
+    width:1.4rem;
+    height:1.4rem;
+    background:rgb(255, 0, 0);
+    border-radius:0.4rem;
+}
+.btnDisabled {
+    background:#ccc;
+}
+.playing,.paused {
+    top: 0.7rem;
+    height:1.6rem;
+    border-style:solid;
+    transition: all 0.2s ease;
+}
+.playing {
+    width: 1rem;
+    border-top: none;
+    border-bottom:none;
+    border-left: 0.3rem solid rgb(255, 255, 255);
+    border-right: 0.3rem solid rgb(255, 255, 255);
+}
+.paused {
+    width:1.5rem;
+    border-width:0.75rem 0 0.75rem 1.5rem;
+    border-color: transparent transparent transparent rgb(255,255,255);
+}
+
+
+.wave_container {
+    flex: 1 1 auto;
+    border:0.1rem solid rgba(191, 197, 168);
+    background: rgb(0, 182, 0, 0.8);
+    border-radius: 0.5rem;
+    min-height:3rem;
+    min-width: 10rem;
+    height:100%;
+}

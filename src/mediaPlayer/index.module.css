@@ -1,0 +1,85 @@
+.container {
+    width: 30rem;
+    display:flex;
+    flex-flow:row nowrap;
+    align-items:center;
+}
+.controller {
+    margin:0 1rem 0 0;
+    padding:0;
+    box-sizing: border-box;
+    width:3rem;
+    height:3rem;
+    background: linear-gradient(to bottom, rgb(199, 226, 47), rgb(172, 196, 36));
+    border-radius:50%;
+    border:none;
+    position: relative;
+    outline:none;
+    cursor: pointer;
+}
+.controller span {
+    position:absolute;
+    top: 0.7rem;
+    display:inline-block;
+    box-sizing: border-box;
+    height:1.6rem;
+    transition: all 0.2s ease;
+    left: 50%;
+    transform: translateX(-50%);
+    background:transparent;
+}
+.controller_paused {
+    width:1.6rem;
+    border-style:solid;
+    border-width:0.75rem 0 0.75rem 1.5rem;
+    border-color: transparent transparent transparent rgb(255, 255, 255);
+}
+.controller_playing {
+    width: 1rem;
+    border-top: none;
+    border-bottom:none;
+    border-left: 0.3rem solid rgb(255, 255, 255);
+    border-right: 0.3rem solid rgb(255, 255, 255);
+}
+.progress {
+    cursor:pointer;
+    flex: 1 1 auto;
+    -webkit-appearance:none;
+    background:rgb(197, 197, 197);
+    height:0.6rem;
+    border-radius:3rem;
+    outline:none;
+}
+/*设置滑块样式*/
+.progress::-moz-range-thumb {
+    -webkit-appearance:none;
+    margin:0;
+    padding:0;
+    box-sizing: border-box;
+    width:1.5rem;
+    height:1.5rem;
+    border-radius:50%;
+    background-color: rgb(172,196,36);
+    border:0.3rem solid rgb(255,192,0);
+}
+.progress::-webkit-slider-thumb { 
+    -webkit-appearance:none;
+    margin:0;
+    padding:0;
+    box-sizing: border-box;
+    width:1.5rem;
+    height:1.5rem;
+    border-radius:50%;
+    background-color: rgb(172,196,36);
+    border:0.3rem solid rgb(255,192,0);
+}
+/*设置滑块前后不同颜色，webkit内核暂不支持,在js中控制*/
+.progress::-moz-range-progress {
+    background: linear-gradient(to right, rgb(172, 196, 36), 100%, rgb(197,197,197));
+}
+.time_container{
+    font-size:1.2rem;
+}
+.volumn {
+    display:none;
+}
