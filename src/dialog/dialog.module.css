@@ -1,0 +1,92 @@
+.layer {
+    margin:0;
+    padding:0;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.4);
+    z-index: 998;
+}
+.mainWrapper{
+    position: fixed;
+    max-width:80%;
+    max-height: 60%;
+    z-index:999;
+}
+.main {
+    margin:0;
+    padding:0;
+    width: 100%;
+    height: 100%;
+    background: rgb(242, 242, 242);
+    border-radius:0 0 10px 10px;
+}
+.main caption {
+    height:40px;
+    line-height:40px;
+    background:#ffa500;
+    color:rgb(255,255,255);
+    font: bold 18px/40px "微软雅黑", "黑体", "宋体";
+    cursor:move;
+    border-radius:10px 10px 0 0;
+}
+.main caption span:last-child {
+    width:22px;
+    height:22px;
+    line-height:21px;
+    position: absolute;
+    top: 8px;
+    right:8px;
+    border-radius:5px;
+    border: 1px solid rgb(218, 142, 2);
+    display:block;
+    cursor:pointer;
+}
+.main caption span:last-child::after, .main caption span:last-child::before{
+    position:absolute;
+    top:10px;
+    left: 2px;
+    content: "";
+    display:block;
+    width:18px;
+    background:red;
+    border-top: 2px solid rgb(255,255,255);
+}
+.main caption span:last-child::before {
+    transform:rotate(135deg);
+}
+.main caption span:last-child::after {
+    transform:rotate(45deg);
+}
+.main tbody {
+    border-radius:none;
+}
+.main tbody td {
+    padding:20px;
+    text-align:left;
+    line-height:180%;
+    background: rgb();
+    vertical-align: top;
+}
+.main tfoot input {
+    margin: 10px;
+    height:30px;
+    min-width:54px;
+    -moz-user-select: none;
+    border:none;
+    background:rgb(245, 245, 245) linear-gradient(to bottom, rgb(248,248,248), rgb(241,241,241));
+    border: 1px solid rgba(0,0,0,0.1);
+    color: rgb(102,102,102);
+    font-family: "黑体", "新宋体";
+    font-size: 12px;
+    font-weight: bold;
+}
+.main tfoot input:hover {
+    background:#f8f8f8 linear-gradient(center top, #f8f8f8, #f1f1f1);
+    border-color:#c6c6c6;
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
+    color: #333333;
+
+}
