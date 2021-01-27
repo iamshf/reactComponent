@@ -16,17 +16,12 @@ export default class dialog extends Component {
             type: "alert",
             display: true
         }
-        this._setMaxValue.bind(this);
-        this._handleKeyPress.bind(this);
-        this._handleConfirm.bind(this);
-        this._handleCancel.bind(this);
-        this._close.bind(this);
     }
     render() {
         return ReactDOM.createPortal(
             <>
                 <div className={Style.layer}></div>
-                <div className={Style.mainWrapper} style={{ width: this.props.width || this.state.width, height: this.props.height || this.state.height, top: `calc(50% - ${this.state.max_height}px / 2)`, left: `calc(50% - ${this.state.max_width}px / 2)` }}>
+                <div className={Style.mainWrapper} style={{ width: this.props.width || this.state.width, height: this.props.height || this.state.height }}>
                     <table cellSpacing="0" cellPadding="0" className={Style.main}>
                         <caption>
                             <span>{this.props.title || this.state.title}</span>
