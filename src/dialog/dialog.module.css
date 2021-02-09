@@ -73,6 +73,9 @@
     background: rgb();
     vertical-align: top;
 }
+.main tfoot td{
+    text-align: center;
+}
 .main tfoot input {
     margin: 10px;
     height:30px;
