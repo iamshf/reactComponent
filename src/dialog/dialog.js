@@ -29,7 +29,7 @@ export default class dialog extends Component {
                         </caption>
                         <tbody>
                             <tr>
-                                <td dangerouslySetInnerHTML={{__html: this.props.content}}></td>
+                                {this.props.children ? <td>{this.props.children}</td> : (typeof(this.props.content) === "string" ? <td style={{padding: "20px"}} dangerouslySetInnerHTML={{__html: this.props.content}}></td> : <td>{this.props.content || this.state.content}</td>)}
                             </tr>
                         </tbody>
                         <tfoot>
