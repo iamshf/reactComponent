@@ -91,7 +91,6 @@ export default class index extends React.Component {
                 this.mr.addEventListener("stop", this._stop.bind(this, ms));
                 this.mediaStreamAudioSourceNode = this.audioCtx.createMediaStreamSource(ms);
                 this.analyserNode = this.audioCtx.createAnalyser();
-                console.log(this.analyserNode);
 
                 this.mediaStreamAudioSourceNode.connect(this.analyserNode);
                 this.analyserNode.connect(this.audioCtx.destination);
