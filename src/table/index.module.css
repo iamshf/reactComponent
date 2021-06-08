@@ -1,0 +1,30 @@
+body{
+    padding-top:100px;
+}
+.main {
+    overflow-y: auto;
+    overflow-x: hidden;
+    height: 400px;
+    position: relative;
+    box-sizing: border-box;
+}
+.main>table {
+    margin: 0 auto;
+    width: calc(100% - 16px);
+    height: auto;
+    box-sizing: border-box;
+}
+.main>table>thead {
+}
+.main>table,.main>table td, .main>table th{
+    border: 1px solid rgb(37, 176, 242);
+    box-sizing: border-box;
+    border-collapse: collapse;
+}
+.main>table>thead>tr>th{
+    background:rgb(181, 231, 255);
+    line-height: 200%;
+}
+.main>table>tbody td{
+    padding: 0 5px;
+}
