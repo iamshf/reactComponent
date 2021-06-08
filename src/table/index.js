@@ -8,7 +8,6 @@ export default class Index extends React.Component {
 
         this.state = {
             fixedHeadStyle: null,
-            fixedHead: typeof(props.fixedHead) === "boolean" ? props.fixedHead : true,
             theadHeight: 0,
             sortIdx: -1,
             sortDirection: 1
@@ -16,7 +15,7 @@ export default class Index extends React.Component {
     }
     render() {
         return (
-            <div className={Style.main} {...(this.state.fixedHead && {onScroll: this._handleScroll})}>
+            <div className={Style.main} {...(this.props.fixedHead && {onScroll: this._handleScroll})}>
                 <table cellPadding="0" cellSpacing="0" ref={this.ref_tb}>
                     <thead ref={this.ref_thead} style={this.state.fixedHeadStyle}>
                         <tr>
@@ -36,7 +35,7 @@ export default class Index extends React.Component {
                             this.props.rows.map((row,row_idx) => {
                                 return (
                                     <tr key={`tb_row_${row_idx}`}>
-                                        {this.props.columns.map((column, column_idx) => <td key={`tb_row_${row_idx}_${column_idx}`}>{row[column.columnName]}</td>)}
+                                        {this.props.columns.map((column, column_idx) => <td key={`tb_row_${row_idx}_${column_idx}`}>{column.dataType === "autoIncrement" ? (row_idx + 1) : row[column.columnName]}</td>)}
                                     </tr>
                                 )
                             })
@@ -50,6 +49,8 @@ export default class Index extends React.Component {
         this._init();
     }
     componentDidUpdate(prevProps, prevState) {
+        this._init();
+        return;
         if(prevProps.fixedHead !== this.props.fixedHead) {
             this.setState({fixedHead: this.props.fixedHead}, () => this._init());
         }
@@ -73,7 +74,7 @@ export default class Index extends React.Component {
             let th_nodes = thead_node.firstChild.childNodes;
             let td_nodes = tbody_node.firstChild.childNodes;
             for(let i = 0, l = td_nodes.length; i < l; i++) {
-                th_nodes[i].style.width = this.state.fixedHead ? td_nodes[i].offsetWidth + "px" : "";
+                th_nodes[i].style.width = this.props.fixedHead ? td_nodes[i].offsetWidth + "px" : "";
             }
             this.setState({theadHeight: thead_node.offsetHeight});
         }

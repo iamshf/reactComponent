@@ -40,7 +40,7 @@ export default class App extends React.Component {
         ];
         return (
             <>
-                <Table thead={["序号","第一列", "第二列", "第三列"]} rows={rows} columns={[{columnName: "id", dataType: "number"}, {columnName: "name", dataType: "string"}, {columnName: "type", dataType: "string"}, {columnName: "tee", dataType: "string"}]} {...this.state} />
+                <Table thead={["序号","第一列", "第二列", "第三列"]} rows={rows} columns={[{columnName: "id", dataType: "autoIncrement"}, {columnName: "name", dataType: "string"}, {columnName: "type", dataType: "string"}, {columnName: "tee", dataType: "string"}]} {...this.state} />
                 <button type="button" onClick={() => this.setState({allowSort: !this.state.allowSort})}>切换是否允许排序</button>
                 <button type="button" onClick={() => this.setState({fixedHead: !this.state.fixedHead})}>切换是否固定表头</button>
             </>
