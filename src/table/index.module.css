@@ -1,11 +1,8 @@
-body{
-    padding-top:100px;
+.main_fixhead {
+    overflow-y: auto;
+    height: 400px;
 }
 .main {
-    overflow-y: auto;
-    overflow-x: hidden;
-    width: 600px;
-    height: 400px;
     position: relative;
     box-sizing: border-box;
 }

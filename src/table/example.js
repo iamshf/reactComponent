@@ -49,7 +49,7 @@ export default class App extends React.Component {
         ];
         return (
             <>
-                <Table rows={rows} columns={columns} {...this.state} />
+                <Table rows={rows} columns={columns} {...this.state} className={Style.main} />
                 <button type="button" onClick={() => this.setState({allowSort: !this.state.allowSort})}>切换是否允许排序</button>
                 <button type="button" onClick={() => this.setState({fixedHead: !this.state.fixedHead})}>切换是否固定表头</button>
             </>

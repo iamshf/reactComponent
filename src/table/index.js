@@ -15,7 +15,7 @@ export default class Index extends React.Component {
     }
     render() {
         return (
-            <div className={Style.main} {...(this.props.fixedHead && {onScroll: this._handleScroll})}>
+            <div className={`${Style.main}${this.props.fixedHead ? ` ${Style.main_fixhead}` : ``}${this.props.className ? ` ${this.props.className}` : ``}`} {...(this.props.fixedHead && {onScroll: this._handleScroll})}>
                 <table cellPadding="0" cellSpacing="0" ref={this.ref_tb}>
                     <thead ref={this.ref_thead} style={this.state.fixedHeadStyle}>
                         <tr>

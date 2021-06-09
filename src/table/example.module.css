@@ -1,3 +1,7 @@
+.main {
+    width: 600px;
+    height: 500px;
+}
 .first_column{
     min-width: 50px;
 }
