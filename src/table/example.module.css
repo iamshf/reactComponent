@@ -1,0 +1,6 @@
+.first_column{
+    min-width: 50px;
+}
+td.second_column{
+    text-align: left;
+}

@@ -4,6 +4,7 @@ body{
 .main {
     overflow-y: auto;
     overflow-x: hidden;
+    width: 600px;
     height: 400px;
     position: relative;
     box-sizing: border-box;
@@ -13,8 +14,6 @@ body{
     width: calc(100% - 16px);
     height: auto;
     box-sizing: border-box;
-}
-.main>table>thead {
 }
 .main>table,.main>table td, .main>table th{
     border: 1px solid rgb(37, 176, 242);

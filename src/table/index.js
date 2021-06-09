@@ -20,10 +20,15 @@ export default class Index extends React.Component {
                     <thead ref={this.ref_thead} style={this.state.fixedHeadStyle}>
                         <tr>
                             {
-                                this.props.thead.map((item, idx) => {
+                                this.props.columns.map((item, idx) => {
+                                    let {title, name, type, allowSort, render, ...props} = item;
+                                    if(item.allowSort === true) {
+                                        props.onClick = this._handleSort.bind(this, idx);
+                                        props.style = {cursor: "pointer"};
+                                    }
                                     return (
-                                        <th key={`th_${idx}`} {...(this.props.allowSort && {onClick: this._handleSort.bind(this, idx), style: {cursor: "pointer"}})}>
-                                            {item}{this.props.allowSort && idx === this.state.sortIdx && (this.state.sortDirection === 1 ? "\u25B2" : "\u25BC")}
+                                        <th key={`th_${idx}`} {...props}>
+                                            {item.title}{item.allowSort && idx === this.state.sortIdx && (this.state.sortDirection === 1 ? "\u25B2" : "\u25BC")}
                                         </th>
                                     )
                                 })
@@ -35,7 +40,20 @@ export default class Index extends React.Component {
                             this.props.rows.map((row,row_idx) => {
                                 return (
                                     <tr key={`tb_row_${row_idx}`}>
-                                        {this.props.columns.map((column, column_idx) => <td key={`tb_row_${row_idx}_${column_idx}`}>{column.dataType === "autoIncrement" ? (row_idx + 1) : row[column.columnName]}</td>)}
+                                        {
+                                            this.props.columns.map((column, column_idx) => {
+                                                let {title, name, type, allowSort, render, ...props} = column;
+                                                return (
+                                                    <td key={`tb_row_${row_idx}_${column_idx}`} {...props}>
+                                                        {
+                                                            column.type === "autoIncrement" ? (row_idx + 1) : (
+                                                                typeof(column.render) === "function" ? column.render("", row, row_idx) : row[column.name]
+                                                            )
+                                                        }
+                                                    </td>
+                                                )
+                                            })
+                                        }
                                     </tr>
                                 )
                             })
@@ -47,13 +65,6 @@ export default class Index extends React.Component {
     }
     componentDidMount() {
         this._init();
-    }
-    componentDidUpdate(prevProps, prevState) {
-        this._init();
-        return;
-        if(prevProps.fixedHead !== this.props.fixedHead) {
-            this.setState({fixedHead: this.props.fixedHead}, () => this._init());
-        }
     }
     _init = () => {
         let tbody_nodes = this.ref_tb.current.childNodes;
@@ -83,13 +94,13 @@ export default class Index extends React.Component {
     _handleSort = (idx, e) => {
         this.props.rows.sort((a, b) => {
             let result;
-            let dataType = this.props.columns[idx].dataType || "string";
-            switch(dataType) {
+            let type = this.props.columns[idx].type || "string";
+            switch(type) {
                 case "number":
-                    result = a[this.props.columns[idx].columnName] - b[this.props.columns[idx].columnName];
+                    result = a[this.props.columns[idx].name] - b[this.props.columns[idx].name];
                     break;
                 default:
-                    result = a[this.props.columns[idx].columnName].toString().localeCompare(b[this.props.columns[idx].columnName].toString());
+                    result = a[this.props.columns[idx].name].toString().localeCompare(b[this.props.columns[idx].name].toString());
                     break;
             }
             return this.state.sortDirection === 0 ? result : -result;
