@@ -1,0 +1,19 @@
+.main{
+    position: relative;
+}
+.main>ul {
+    margin: 0;
+    padding: 10px 0;
+    list-style: none;
+    width: auto;
+    height: 100px;
+    position: absolute;
+    overflow: auto;
+    background: rgb(255, 255, 255);
+}
+.main li {
+    white-space: nowrap;
+}
+.hide {
+    display: none;
+}
