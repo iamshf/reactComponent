@@ -1,15 +1,24 @@
 .main{
     position: relative;
 }
+.main>input {
+    width: 100%;
+    border: 1px solid rgb(0, 0, 0);
+    background:rgb(255, 255, 255) url("./down arrow.svg") no-repeat 98% center /auto 60%;
+}
 .main>ul {
     margin: 0;
     padding: 10px 0;
     list-style: none;
     width: auto;
+    min-width: 100%;
     height: 100px;
     position: absolute;
     overflow: auto;
     background: rgb(255, 255, 255);
+    border-left: 1px solid rgb(128, 128, 128);
+    border-right: 1px solid rgb(128, 128, 128);
+    border-bottom: 1px solid rgb(128, 128, 128);
 }
 .main li {
     white-space: nowrap;
