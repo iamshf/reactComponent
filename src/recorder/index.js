@@ -52,14 +52,16 @@ export default class index extends React.Component {
                 });
             }
         }
-        if((window.AudioContext || window.webkitAudioContext)) {
-            this.audioCtx = new (window.AudioContext || window.webkitAudioContext)();
-        }
-        else {
+        if(!(window.AudioContext || window.webkitAudioContext)) {
             this._onFailed("您的浏览器不支持录音功能，请更换标准浏览器比如Mozilla Firefox或者Google Chrome");
         }
         if(!MediaRecorder) {
             this._onFailed("您的浏览器可能为开启录音功能，请在设置中找到相关功能并开启");
+        }
+    }
+    _initAudioContext = () => {
+        if(!this.audioCtx) {
+            this.audioCtx = new (window.AudioContext || window.webkitAudioContext)();
         }
     }
     _dataavailable = (e) => {
@@ -76,6 +78,7 @@ export default class index extends React.Component {
         this.state.state !== "playing" && this.setState({state: this.mr.state});
     }
     _handleRecordClick = () => {
+        this._initAudioContext();
         if(this.state.state === "playing") {
             this._stopPlay();
             this._startRecord();
@@ -111,6 +114,7 @@ export default class index extends React.Component {
         cancelAnimationFrame(this.animationId);
     }
     _handlePlayClick = () => {
+        this._initAudioContext();
         if(this.state.state === "recording") {
             this.setState({state: "playing"});
             this._stopRecord();
