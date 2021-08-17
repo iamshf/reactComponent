@@ -93,7 +93,9 @@ export default class index extends React.Component {
                 this.analyserNode = this.audioCtx.createAnalyser();
 
                 this.mediaStreamAudioSourceNode.connect(this.analyserNode);
-                this.analyserNode.connect(this.audioCtx.destination);
+                if(this.props.sync_output) {
+                    this.analyserNode.connect(this.audioCtx.destination);
+                }
                 this.mr.start();
 
                 this._draw();
