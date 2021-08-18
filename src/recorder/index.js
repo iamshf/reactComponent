@@ -6,6 +6,7 @@ export default class index extends React.Component {
     mediaStreamAudioSourceNode = null;
     audioBufferSource = null;
     analyserNode = null;
+    gainNode = null;
     canvasCtx = null;
     canvasWidth = 0;
     canvasHeight = 0;
@@ -96,8 +97,13 @@ export default class index extends React.Component {
                 this.analyserNode = this.audioCtx.createAnalyser();
 
                 this.mediaStreamAudioSourceNode.connect(this.analyserNode);
-                if(this.props.sync_output) {
+                if(this.props.sync_output === true) {
                     this.analyserNode.connect(this.audioCtx.destination);
+                }
+                else {
+                    this.gainNode = this.audioCtx.createGain();
+                    this.gainNode.gain.value = 0;
+                    this.analyserNode.connect(this.gainNode).connect(this.audioCtx.destination);
                 }
                 this.mr.start();
 
