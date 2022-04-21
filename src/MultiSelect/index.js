@@ -1,29 +1,35 @@
 import React from 'react';
-
 import Style from "./index.module.css";
 
-export default class MultiIndex extends React.Component {
+export default class MultiSelect extends React.Component {
     constructor(props) {
         super(props);
         this.state = {is_focus: false, show_option: false, selected_data: [], value: ""};
     }
     render() {
+        let className = {main: Style.main, wrapper: Style.wrapper, ...(this.props.className || {})}
         return (
-            <div className={this.props.className || Style.main} onMouseOver={this._toogleFocus.bind(this, true)} onMouseOut={this._toogleFocus.bind(this, false)}>
-                <input type="text" onClick={this._toogleShowOptions.bind(this, true)} placeholder={this.props.placeholder || "请选择"} value={this.state.value} required={this.props.required || false} onChange={this._handleInputChange} title={this.props.title || ""} />
-                <ul className={this.state.show_option ? "" : Style.hide}>
-                    {
-                        this.props.data.map((item, idx) => {
-                            return (
-                                <li key={item.id}>
-                                    <input type="checkbox" id={`MultiSelect_ckb_${item[this.props.optionValue]}`} onChange={this._handleChange.bind(this, idx, item)} />
-                                    <label htmlFor={`MultiSelect_ckb_${item[this.props.optionValue]}`}>{item[this.props.optionText]}</label>
-                                </li>
-                            );
-                        })
-                    }
-                </ul>
-            </div>
+            <>
+                <div className={className.main} onMouseOver={this._toogleFocus.bind(this, true)} onMouseOut={this._toogleFocus.bind(this, false)}>
+                    <div onClick={this._toogleShowOptions.bind(this, true)} className={this.state.show_option ? Style.show_option : ''}>
+                        <input type="text" placeholder={this.props.placeholder || "请选择"} value={this.state.value} required={this.props.required || false} onChange={this._handleInputChange} title={this.props.title || ""} />
+                    </div>
+                    
+                    <ul className={this.state.show_option ? "" : Style.hide}>
+                        {
+                            this.props.data.map((item, idx) => {
+                                return (
+                                    <li key={item.id}>
+                                        <input type="checkbox" id={`MultiSelect_ckb_${item[this.props.optionValue]}`} onChange={this._handleChange.bind(this, idx, item)} />
+                                        <label htmlFor={`MultiSelect_ckb_${item[this.props.optionValue]}`}>{item[this.props.optionText]}</label>
+                                    </li>
+                                );
+                            })
+                        }
+                    </ul>
+                </div>
+                {this.state.show_option && <div className={className.wrapper}></div>}
+            </>
         );
     }
     componentDidMount() {
