@@ -48,11 +48,11 @@ export default class App extends React.Component {
             {title: "编辑", render: (text, record, idx) => <a href="https://www.baidu.com" onClick={this._handleClick.bind(this, text, record, idx)}>{record.name}</a>},
         ];
         return (
-            <>
+            <div>
                 <Table rows={rows} columns={columns} {...this.state} className={Style.main} />
                 <button type="button" onClick={() => this.setState({allowSort: !this.state.allowSort})}>切换是否允许排序</button>
                 <button type="button" onClick={() => this.setState({fixedHead: !this.state.fixedHead})}>切换是否固定表头</button>
-            </>
+            </div>
         );
     }
     _handleClick = (text, record, idx, e) => {

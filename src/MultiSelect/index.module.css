@@ -1,62 +1,38 @@
 .main{
     position: relative;
-    width: 200px;
-    height: 30px;
-    z-index: 999;
 }
-.main>div:first-child{
+.main>input {
     width: 100%;
-    height: 100%;
     border: 1px solid rgb(0, 0, 0);
-    box-sizing: border-box;
-}
-.main>div:first-child::after{
-    content: '';
-    position:absolute;
-    right: 0;
-    top: 0;
-    display: block;
-    width: 100%;
+    background:rgb(255, 255, 255) url("./down arrow.svg") no-repeat 98% center /auto 60%;
+    border-radius: 5px;
     height: 100%;
-    background:url("./down arrow.svg") no-repeat 98% center /auto 60%;
 }
-.main>div:first-child.show_option::after{
-    transform: rotateX(180deg);
+.main>input.show_opt{
+    background-image: url("./up\ arrow.svg");
 }
-.main>div:first-child>input {
-    width: 100%;
-    height: 100%;
-    background: transparent;
-    box-sizing: border-box;
-    border: none;
-}
-
 .main>ul {
     margin: 0;
-    padding: 10px 0;
+    padding: 0;
     list-style: none;
     width: auto;
     min-width: 100%;
-    height: 100px;
+    height: 150px;
     position: absolute;
     overflow: auto;
     background: rgb(255, 255, 255);
     border-left: 1px solid rgb(128, 128, 128);
     border-right: 1px solid rgb(128, 128, 128);
     border-bottom: 1px solid rgb(128, 128, 128);
+    z-index: 999;
 }
 .main li {
+    padding: 5px 10px;
     white-space: nowrap;
+}
+.main li:hover{
+    background: rgba(151, 151, 151, 0.5);
 }
 .hide {
     display: none;
-}
-.wrapper {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    z-index: -1;
-    background: rgba(128, 128, 128, 0.4);
 }
