@@ -78,7 +78,7 @@ export default class MultiIndex extends React.Component {
         else {
             this.setState({ value: item[this.props.optionText], show_option: false });
             if (typeof (this.props.onChange) === "function") {
-                this.props.onChange(item.id, item, e);
+                this.props.onChange(idx, item.id, item, e);
             }
         }
     }
